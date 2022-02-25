@@ -1,5 +1,7 @@
 const model = require("../models/story");
 
+
+//Show all stories
 exports.index = (req, res) => {
   let stories = model.find();
   console.log(stories);
@@ -11,11 +13,9 @@ exports.new = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  // console.log(req.body)
   let story = req.body;
   model.save(story);
   res.redirect("/stories");
-  //   res.send("temp_categories");
 };
 
 exports.show = (req, res,next) => {

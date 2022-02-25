@@ -1,5 +1,7 @@
 const { DateTime }= require('luxon')
 const { v4: uuidv4 } = require('uuid');
+
+//stories array it is an array of objects
 const stories = [
   {
     id: 1,
@@ -27,18 +29,22 @@ const stories = [
   },
 ];
 
+//exports stories array
 exports.find=()=> stories
 
+//send object found by requested id
 exports.findById=(id)=> {
    return stories.find(story=>story.id == id)
 }
 
+//add object send by user in array
 exports.save=(story)=>{
     story.createdAt=DateTime.now().toLocaleString(DateTime.DATETIME_SHORT);
     story.id=uuidv4();
     stories.push(story)
 }
 
+//update object by id
 exports.updateByID=(id,newStory)=>{
     let story=this.findById(id);
     if(story){
@@ -50,6 +56,7 @@ exports.updateByID=(id,newStory)=>{
     }
 }
 
+//delete object by id
 exports.deleteByID=(id)=>{
     console.log(id)
     let index=stories.findIndex(story=>story.id==id);
