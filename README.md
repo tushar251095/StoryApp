@@ -5,8 +5,9 @@ Steps to install
 
 1. Clone the application.
 2. Open it in vs Code and run command npm install
-3. Then in browser run the http://localhost:3000/
-4. If you see landing page you are good to go.
+3. then run npm start
+4. Then in browser run the http://localhost:3000/
+5. If you see landing page you are good to go.
 
 Description:
 It is an MVC application.
