@@ -1,0 +1,77 @@
+*{
+    margin:0;
+    padding: 0;
+}
+nav{
+    background-color: rgb(1, 83, 1);
+    color: white;
+    height: 15vh;
+}
+
+h2{
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    margin-left: 82vw;
+    padding: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+nav a{
+    padding-top: 120px;
+    text-decoration: none;
+    color: white;
+    padding-left: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+
+.content{
+    background-color: rgb(243, 232, 210);
+    height:78vh ;
+    padding-left: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+footer{
+    background-color: rgb(1, 83, 1);
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+    height: 7vh;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.fixed-width{
+    width: 300px;
+}
+input,textarea{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+}
+.align-right{
+    text-align: right;
+}
+.align-top{
+    vertical-align: top;
+}
+td{
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+label{
+    font-size: small;
+}
+
+#story{
+    width: 50%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+form{
+    padding-top:20px;
+}
