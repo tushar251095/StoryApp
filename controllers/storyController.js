@@ -4,7 +4,6 @@ const model = require("../models/story");
 //Show all stories
 exports.index = (req, res) => {
   let stories = model.find();
-  console.log(stories);
   res.render("./story/index", { stories });
 };
 

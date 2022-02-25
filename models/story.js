@@ -58,9 +58,7 @@ exports.updateByID=(id,newStory)=>{
 
 //delete object by id
 exports.deleteByID=(id)=>{
-    console.log(id)
     let index=stories.findIndex(story=>story.id==id);
-    console.log(index)
     if(index!==-1){
        stories.splice(index,1)
         return true
