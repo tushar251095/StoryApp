@@ -1,5 +1,7 @@
 <%- include('../partials/header.ejs')%>
 <div class = "content">
+   <h4 class="formheader">Edit story</h4>
+    <div class="formclass">
     <form method="POST" action="/stories/<%=story.id%>?_method=PUT">
         <table>
             <tr>
@@ -14,6 +16,6 @@
             </tr>
             </table>        
     </form>
-
+</div>
     </div>
     <%- include('../partials/footer.ejs')%>

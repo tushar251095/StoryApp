@@ -1,6 +1,10 @@
 <%- include('../partials/header.ejs')%>
 <div class = "content">
+    <h3 class="formheader">Create New Story</h3>
+    <div class="formclass">
+    
     <form action = '/stories' method = 'POST'>
+        
         <table>
             <tr>
                 <td><label for="author">Author</label></td>
@@ -19,6 +23,6 @@
             </tr>
         </table>        
     </form>
-
+</div>
     </div>
     <%- include('../partials/footer.ejs')%>
