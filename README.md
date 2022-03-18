@@ -23,7 +23,7 @@ views folder has all the ejs templates that are rendered in browser.
 Routes folder contains files that has all routes of the application.
 
 
-# StoryApp_javaScript Array
+# StoryApp_Mongo Array
 Basic stories application developed in nodejs and using ejs template. It has all CURD operations performed on mongoDB database.
 
 Steps to install
