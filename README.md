@@ -3,8 +3,8 @@ Basic stories application developed in nodejs and using ejs template. It has all
 
 Steps to install
 
-1. Clone the StoryApp_JavaScriptArray application.
-2. Open it in vs Code and run command npm install
+1. Clone the StoryApp application.
+2. Open StoryApp_JavaScriptArray folder in vs Code and run command npm install
 3. then run npm start
 4. Then in browser run the http://localhost:3000/
 5. If you see landing page you are good to go.
@@ -28,8 +28,8 @@ Basic stories application developed in nodejs and using ejs template. It has all
 
 Steps to install
 
-1. Clone the StoryApp_Mongo application.
-2. Open it in vs Code and run command npm install
+1. Clone the StoryApp application.
+2. Open StoryApp_Mongo folder in vs Code and run command npm install
 3. then run npm start
 4. Then in browser run the http://localhost:3000/
 5. If you see landing page you are good to go.
