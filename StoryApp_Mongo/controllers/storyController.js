@@ -1,98 +1,115 @@
 const model = require('../models/story');
-exports.index = (req, res,next)=>{
+exports.index = (req, res, next)=>{
     //res.send('send all stories');
- model.find()
- .then(stories=>res.render('./story/index', {stories}))
- .catch((err)=>{
-     next(err);
- })
+    model.find()
+    .then(stories=>res.render('./story/index', {stories}))
+    .catch(err=>next(err));
 };
 
 exports.new = (req, res)=>{
     res.render('./story/new');
 };
 
-exports.create = (req, res,next)=>{
+exports.create = (req, res, next)=>{
     //res.send('Created a new story');
-    let story = req.body;
-    story.createdAt=new Date();
-    model.save(story)
-    .then(()=>{
-        res.redirect('/stories');
-    })
-    .catch((err)=>{
+    let story = new model(req.body);//create a new story document
+    story.save()//insert the document to the database
+    .then(story=> res.redirect('/stories'))
+    .catch(err=>{
+        if(err.name === 'ValidationError' ) {
+            err.status = 400;
+        }
         next(err);
-    })
+    });
     
 };
 
 exports.show = (req, res, next)=>{
     let id = req.params.id;
-    let story = model.findById(id)
-    .then((story)=>{
+    //an objectId is a 24-bit Hex string
+    if(!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid story id');
+        err.status = 400;
+        return next(err);
+    }
+    model.findById(id)
+    .then(story=>{
         if(story) {
-            res.render('./story/show', {story})
+            return res.render('./story/show', {story});
         } else {
             let err = new Error('Cannot find a story with id ' + id);
             err.status = 404;
             next(err);
         }
     })
-    .catch((err)=>{
-        next(err);
-    })
-   
-   
+    .catch(err=>next(err));
 };
 
 exports.edit = (req, res, next)=>{
     let id = req.params.id;
+    if(!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid story id');
+        err.status = 400;
+        return next(err);
+    }
     model.findById(id)
-    .then((story)=>{
+    .then(story=>{
         if(story) {
-            res.render('./story/edit', {story});
+            return res.render('./story/edit', {story});
         } else {
             let err = new Error('Cannot find a story with id ' + id);
             err.status = 404;
             next(err);
         }
     })
-    .catch((err)=>{
-        next(err);
-    })
-    
+    .catch(err=>next(err));
 };
 
 exports.update = (req, res, next)=>{
     let story = req.body;
     let id = req.params.id;
-    model.updateById(id, story).then((result)=>{
-        if(result.modifiedCount===1){
+
+    if(!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid story id');
+        err.status = 400;
+        return next(err);
+    }
+
+    model.findByIdAndUpdate(id, story, {useFindAndModify: false, runValidators: true})
+    .then(story=>{
+        if(story) {
             res.redirect('/stories/'+id);
-        }else{
+        } else {
             let err = new Error('Cannot find a story with id ' + id);
             err.status = 404;
             next(err);
         }
     })
-    .catch((err)=>{
+    .catch(err=> {
+        if(err.name === 'ValidationError')
+            err.status = 400;
         next(err);
-    })
+    });
 };
 
 exports.delete = (req, res, next)=>{
     let id = req.params.id;
-    model.deleteById(id)
-    .then(result=>{
-        if(result.deletedCount===1){
+
+    if(!id.match(/^[0-9a-fA-F]{24}$/)) {
+        let err = new Error('Invalid story id');
+        err.status = 400;
+        return next(err);
+    }
+
+    model.findByIdAndDelete(id, {useFindAndModify: false})
+    .then(story =>{
+        if(story) {
             res.redirect('/stories');
-        }else{
+        } else {
             let err = new Error('Cannot find a story with id ' + id);
             err.status = 404;
-            next(err);
+            return next(err);
         }
     })
-   .catch(err=>{
-       next(err);
-   })
+    .catch(err=>next(err));
 };

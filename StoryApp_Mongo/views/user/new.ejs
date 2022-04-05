@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs')%>
+<div class="signup-container">
+    <div class="signup-sub-container-1">
+        <form action="/users/new" method="POST" class="signup-form"> 
+            <h3>User Registration</h3>
+            <label for="firstName">First Name<span class="star">*</span></label><br>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+            <label for="lastName">Last Name <span class="star">*</span></label><br>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+            <label for="email">Email <span class="star">*</span></label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="password">Password <span class="star">*</span></label><br>
+            <input type="password" id="password" name="password" required><br><br>
+            <button>Sign Up</button><br>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer.ejs')%>

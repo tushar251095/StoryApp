@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style.css">
     <title>Jibber Jabber</title>
+    <script src="/js/common.js"></script>
 </head>
 <body>
     <nav>
@@ -11,4 +12,32 @@
         <a href='/'>Home</a>
         <a href='/stories'>Stories</a>
         <a href='/stories/new'>Create a New Story</a>
+        <a href='/users/new'>Sign Up</a>
+        <a href='/users/login'>Login</a>
+        <a href='/users/profile'>Profile</a>
+        <a href='/users/logout'>Logout</a>
     </nav>
+
+   
+    <% if(errorMessages.length>0){%>
+        <%errorMessages.forEach(message=>{%>
+            <div class="flashmsg" id="msg">
+                <div class="error">
+                    <span><%=message%></span>
+                    <div class="flashclose" onclick="closeflashmsg()">X</div>
+                </div>
+            </div>
+           
+       <% })%>
+    <%}%>
+
+    <% if(successMessages.length>0){%>
+        <%successMessages.forEach(message=>{%>
+            <div class="flashmsg" id="msg">
+                <div class="success">
+                    <span><%=message%></span>
+                    <div class="flashclose" onclick="closeflashmsg()">X</div>
+                </div>
+            </div>
+       <% })%>
+    <%}%>
